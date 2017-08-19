@@ -25,13 +25,11 @@ namespace WeatherReport.Api.Tests.Infrastructure.Modules
             {
                 typeof(WeatherController),
                 typeof(CitiesController),
-
             };
 
             return typesToResolve
                 .Select(x => new TestCaseData(x)
                 {
-
                     //TestName = $"Can_resolve_{x.Name}"
                 })
                 .ToList();
@@ -51,5 +49,4 @@ namespace WeatherReport.Api.Tests.Infrastructure.Modules
             }
         }
     }
-
 }

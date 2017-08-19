@@ -22,7 +22,7 @@ namespace WeatherReport.Api.Tests
             };
 
             // Act
-            var actionResult = weatherController.Get("Australia","Sydney Airport");
+            var actionResult = weatherController.Get("Australia", "Sydney Airport");
             var contentResult = actionResult as OkNegotiatedContentResult<WeatherModel>;
 
             // Assert
@@ -41,8 +41,8 @@ namespace WeatherReport.Api.Tests
             };
 
             // Act
-            var actionResult = weatherController.Get("","");
-            var contentResult = (BadRequestErrorMessageResult)actionResult;
+            var actionResult = weatherController.Get("", "");
+            var contentResult = (BadRequestErrorMessageResult) actionResult;
 
             //Assert
             contentResult.Message.ShouldBeEquivalentTo("Country Name must be provided");
@@ -61,12 +61,13 @@ namespace WeatherReport.Api.Tests
 
             // Act
             var actionResult = weatherController.Get("Australia", "");
-            var contentResult = (BadRequestErrorMessageResult)actionResult;
+            var contentResult = (BadRequestErrorMessageResult) actionResult;
 
             //Assert
             contentResult.Message.ShouldBeEquivalentTo("City Name must be provided");
             Assert.IsInstanceOfType(contentResult, typeof(BadRequestErrorMessageResult));
         }
+
         [TestMethod]
         public void ShouldReturnNoRecordsFoundGetCitiesByCountry()
         {
@@ -78,8 +79,8 @@ namespace WeatherReport.Api.Tests
             };
 
             // Act
-            var actionResult = weatherController.Get("Singapore","Singapore Airport");
-            var contentResult = (NotFoundResult)actionResult;
+            var actionResult = weatherController.Get("Singapore", "Singapore Airport");
+            var contentResult = (NotFoundResult) actionResult;
 
             //Assert
             Assert.IsInstanceOfType(contentResult, typeof(NotFoundResult));

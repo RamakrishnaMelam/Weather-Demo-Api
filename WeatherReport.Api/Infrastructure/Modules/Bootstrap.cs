@@ -2,16 +2,16 @@
 
 namespace WeatherReport.Api.Infrastructure.Modules
 {
-      public class Bootstrap
+    public class Bootstrap
+    {
+        public static IContainer Container()
         {
-            public static IContainer Container()
-            {
-                var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
 
 
-                builder.RegisterAssemblyModules(ApiDependencyModule.Assembly);
+            builder.RegisterAssemblyModules(ApiDependencyModule.Assembly);
 
-                return builder.Build();
-            }
+            return builder.Build();
         }
+    }
 }

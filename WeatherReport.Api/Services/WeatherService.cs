@@ -45,7 +45,6 @@ namespace WeatherReport.Api.Services
             catch (Exception)
             {
                 return GetCitiesFromMockData(request);
-
             }
         }
 
@@ -60,7 +59,7 @@ namespace WeatherReport.Api.Services
             try
             {
                 var client = new GlobalWeather();
-                var result = client.GetWeather(request.Country,request.City);
+                var result = client.GetWeather(request.Country, request.City);
 
                 if (result != null && result.Trim().Equals("Data Not Found"))
                     return GetWeatherReportFromMockData(request);
@@ -101,10 +100,10 @@ namespace WeatherReport.Api.Services
             return response;
         }
 
-
         #endregion
 
         #region Private Methods
+
         /// <summary>
         ///
         /// </summary>
@@ -115,8 +114,9 @@ namespace WeatherReport.Api.Services
             var mockData = new WeatherRepository();
             return mockData
                 .GetWeatherData()
-                .FirstOrDefault(data => string.Equals(data.Country, request.Country, StringComparison.OrdinalIgnoreCase) &&
-                                        string.Equals(data.Location, request.City, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(
+                    data => string.Equals(data.Country, request.Country, StringComparison.OrdinalIgnoreCase) &&
+                            string.Equals(data.Location, request.City, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
@@ -127,11 +127,12 @@ namespace WeatherReport.Api.Services
         private static IEnumerable<CityModel> GetCitiesFromMockData(GetCitiesByCountryRequest request)
         {
             var mockData = new CityRepository();
-            return mockData.GetAllCitiesData().Where(data => string.Equals(data.Country, request.Country,
-                StringComparison.OrdinalIgnoreCase)).ToList();
+            return mockData.GetAllCitiesData()
+                .Where(data => string.Equals(data.Country, request.Country,
+                    StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
         #endregion
-
     }
 }

@@ -45,12 +45,11 @@ namespace WeatherReport.Api.Tests
 
             // Act
             var actionResult = citiesController.Get("");
-            var contentResult = (BadRequestErrorMessageResult)actionResult;
+            var contentResult = (BadRequestErrorMessageResult) actionResult;
 
             //Assert
             contentResult.Message.ShouldBeEquivalentTo("Country Name must be provided");
             Assert.IsInstanceOfType(contentResult, typeof(BadRequestErrorMessageResult));
-
         }
 
         [TestMethod]

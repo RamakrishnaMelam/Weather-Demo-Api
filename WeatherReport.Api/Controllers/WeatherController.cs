@@ -6,14 +6,17 @@ namespace WeatherReport.Api.Controllers
 {
     public class WeatherController : ApiController
     {
-
         private readonly IWeatherService _weatherService;
+
         public WeatherController(IWeatherService weatherService)
         {
             _weatherService = weatherService;
         }
 
-        public WeatherController() { _weatherService = new WeatherService();}
+        public WeatherController()
+        {
+            _weatherService = new WeatherService();
+        }
 
         /// <summary>
         ///
@@ -22,7 +25,7 @@ namespace WeatherReport.Api.Controllers
         /// <param name="city"></param>
         /// <returns></returns>
         [Route("Weather/{countryName}/{city}")]
-        public IHttpActionResult Get([FromUri]string countryName, string city)
+        public IHttpActionResult Get([FromUri] string countryName, string city)
         {
             if (string.IsNullOrWhiteSpace(countryName))
             {
@@ -37,7 +40,7 @@ namespace WeatherReport.Api.Controllers
             var request = new GetWeatherReportRequest
             {
                 Country = countryName,
-                City =  city
+                City = city
             };
 
             var weatherResponse = _weatherService.GetWeatherReport(request);
@@ -48,6 +51,5 @@ namespace WeatherReport.Api.Controllers
 
             return Ok(weatherResponse);
         }
-
     }
 }

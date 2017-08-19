@@ -18,6 +18,7 @@ namespace WeatherReport.Api.Infrastructure.Modules
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
         }
+
         public static Assembly Assembly => typeof(ApiDependencyModule).Assembly;
     }
 }

@@ -12,6 +12,5 @@
         public string DewPoint { get; set; }
         public string RelativeHumidity { get; set; }
         public string Pressure { get; set; }
-
     }
 }

@@ -12,13 +12,14 @@ namespace WeatherReport.Api.Controllers
         {
             _weatherService = weatherService;
         }
+
         public CitiesController()
         {
             _weatherService = new WeatherService();
         }
 
         [Route("Cities/{countryName}")]
-        public IHttpActionResult Get([FromUri]string countryName)
+        public IHttpActionResult Get([FromUri] string countryName)
         {
             if (string.IsNullOrWhiteSpace(countryName))
             {
@@ -38,6 +39,5 @@ namespace WeatherReport.Api.Controllers
 
             return Ok(cityList);
         }
-
     }
 }
